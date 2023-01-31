@@ -9,8 +9,17 @@
                 <h6>No hay tarea para mostrar</h6>
             </div>
             <ul class="list-group">
-                <li *ngFor="let tarea of listTareas" class="list-group-item">
+                <li *ngFor="let tarea of listTareas; let i = index" class="list-group-item d-flex justify-content-between">
+                    <span class="cursor"(click)="actualizarTarea(i, tarea)">
+                        <i [class.text-success]="tarea.estado" [ngClass]="tarea.estado ? 'fa-solid fa-circle-check' : 'far fa-circle' "></i>
+                        <!-- <i class="far fa-circle">
+                        <i class="fa-solid fa-circle-check"></i> -->
+                        </span>
                     {{tarea.nombre}}
+                    <span class="cursor text-danger" (click)="eliminarTarea(i)">
+                        <i class="fas fa-trash-alt">
+
+                        </i></span>
                 </li>
             </ul>
         </div>
